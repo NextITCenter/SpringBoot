@@ -33,10 +33,11 @@ class BoardMapperTest {
     @Test
     void registerBoard() {
         // TDD(Test Driven Development)
-        BoardVO board = new BoardVO();
-        board.setWriter("a001");
-        board.setTitle("테스트 제목");
-        board.setContent("테스트 내용");
+//        BoardVO board = new BoardVO();
+//        board.setWriter("a001");
+//        board.setTitle("테스트 제목");
+//        board.setContent("테스트 내용");
+        BoardVO board = BoardVO.builder().writer("a001").title("테스트 제목").content("테스트 내용").build();
 
         mapper.registerBoard(board);
 
@@ -46,18 +47,21 @@ class BoardMapperTest {
 
     @Test
     void modifyBoard() {
-        BoardVO board = new BoardVO();
-        board.setNo(830);
-        board.setTitle("테스트 코드");
-        board.setContent("테스트 코드를 실행하여 수정을 진행함");
-        board.setWriter("쵸파");
+//        BoardVO board = new BoardVO();
+//        board.setNo(830);
+//        board.setTitle("테스트 코드");
+//        board.setContent("테스트 코드를 실행하여 수정을 진행함");
+//        board.setWriter("쵸파");
 
+        new StringBuilder().append("abc").append("def").toString();
+        BoardVO board = BoardVO.builder().no(830).writer("쵸파").title("테스트 코드").content("테스트 코드를 실행하여 수정을 진행함").build();
         mapper.modifyBoard(board);
         assertEquals(board.getTitle(), mapper.selectBoard(830).getTitle());
     }
 
     @Test
-    void removeBoard() {
-
+    void selectBoard() {
+        BoardVO board = mapper.selectBoard(804);
+        log.debug("board: {}", board);
     }
 }

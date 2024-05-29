@@ -2,6 +2,7 @@ package kr.or.nextit.springboot.board;
 
 import kr.or.nextit.springboot.file.FileMapper;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -21,6 +22,7 @@ public class BoardService {
         mapper.updateHits(boardNo);
         return mapper.selectBoard(boardNo);
     }
+    @Transactional
     public void registerBoard(BoardVO board) {
         mapper.registerBoard(board);
         board.getFileList().forEach(f -> f.setBoardNo(board.getNo()));
