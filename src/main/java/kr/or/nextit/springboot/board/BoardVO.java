@@ -21,6 +21,7 @@ public class BoardVO {
     private LocalDate createDate;
     private LocalDate modifyDate;
     private long hits;
+    private long commentSize;
     private List<CommentVO> commentList;
     private List<FileVO> fileList;
 }

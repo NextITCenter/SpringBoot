@@ -23,7 +23,8 @@
             A.CONTENT,
             A.CREATE_DATE,
             A.MODIFY_DATE,
-            A.HITS
+            A.HITS,
+            (SELECT COUNT(*) FROM COMMENTS C WHERE C.BOARD_NO = A.NO) COMMENT_SIZE
         FROM
             BOARD A
             LEFT OUTER JOIN MEMBER B ON A.WRITER = B.ID
@@ -32,7 +33,8 @@
         SELECT
             A.ID,
             A.BOARD_NO,
-            B.NAME WRITER,
+            A.WRITER,
+            B.NAME,
             A.CONTENT,
             A.CREATE_DATE,
             A.MODIFY_DATE

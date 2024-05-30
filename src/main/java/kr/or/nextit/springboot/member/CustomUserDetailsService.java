@@ -17,11 +17,13 @@ public class CustomUserDetailsService implements UserDetailsService {
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+        log.info("username: {}", username);
         MemberVO member = mapper.findMemberById(username);
+        log.info("member: {}", member);
         return User.builder()
                 .username(member.getId())
                 .password(member.getPassword())
-                .roles(member.getAuthList().toArray(new String[0]))
+                .roles(member.getAuthList().stream().map(AuthorityVO::getRole).toList().toArray(new String[0]))
                 .build();
     }
 }

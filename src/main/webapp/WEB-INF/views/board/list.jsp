@@ -22,7 +22,7 @@
     <c:forEach items="${boards}" var="board">
         <tr>
             <td>${board.no}</td>
-            <td><a href="/board/view?no=${board.no}">${board.title}</a></td>
+            <td><a href="/board/view?no=${board.no}">${board.title}</a> (${board.commentSize})</td>
             <td>${board.writer}</td>
             <td>${board.createDate}</td>
         </tr>
